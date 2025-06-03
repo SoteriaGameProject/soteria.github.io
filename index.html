@@ -1,16 +1,55 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Спасибо за интерес к игре</title>
+  <title>Game Landing</title>
   <link rel="stylesheet" href="assets/style.css" />
+  <script>
+    // Определение языка пользователя
+    document.addEventListener('DOMContentLoaded', () => {
+      const userLang = navigator.language || navigator.userLanguage;
+      const isRU = userLang.startsWith('ru');
+
+      const texts = {
+        ru: {
+          title: 'Спасибо за проявленный интерес!',
+          subtitle: 'Ожидайте обновления информации в скором времени.',
+          emailLabel: 'Внесите свой адрес электронной почты, если хотите подтвердить свой интерес к проекту и показать нам, что стоит его продолжать',
+          placeholder: 'Введите ваш email',
+          button: 'Подтвердить интерес'
+        },
+        en: {
+          title: 'Thank you for your interest!',
+          subtitle: 'Stay tuned for more updates soon.',
+          emailLabel: 'Leave your email if you want to confirm interest and show us it’s worth continuing the project',
+          placeholder: 'Enter your email',
+          button: 'Confirm Interest'
+        }
+      };
+
+      const t = isRU ? texts.ru : texts.en;
+      document.getElementById('title').innerText = t.title;
+      document.getElementById('subtitle').innerText = t.subtitle;
+      document.getElementById('email-label').innerText = t.emailLabel;
+      document.getElementById('email-input').placeholder = t.placeholder;
+      document.getElementById('submit-btn').innerText = t.button;
+    });
+  </script>
 </head>
 <body>
   <div class="container">
-    <img src="assets/poster.jpg" alt="Постер игры" class="poster"/>
-    <h1>Спасибо за проявленный интерес!</h1>
-    <p>Ожидайте обновления информации в скором времени.</p>
+    <img src="assets/poster.jpg" alt="Постер игры" class="poster" />
+    <h1 id="title"></h1>
+    <p id="subtitle"></p>
+
+    <div class="email-section">
+      <p id="email-label"></p>
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <input type="email" name="email" id="email-input" required />
+        <button type="submit" id="submit-btn"></button>
+      </form>
+    </div>
   </div>
 </body>
 </html>
