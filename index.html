@@ -2,54 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Game Landing</title>
-  <link rel="stylesheet" href="assets/style.css" />
-  <script>
-    // Определение языка пользователя
-    document.addEventListener('DOMContentLoaded', () => {
-      const userLang = navigator.language || navigator.userLanguage;
-      const isRU = userLang.startsWith('ru');
-
-      const texts = {
-        ru: {
-          title: 'Спасибо за проявленный интерес!',
-          subtitle: 'Ожидайте обновления информации в скором времени.',
-          emailLabel: 'Внесите свой адрес электронной почты, если хотите подтвердить свой интерес к проекту и показать нам, что стоит его продолжать',
-          placeholder: 'Введите ваш email',
-          button: 'Подтвердить интерес'
-        },
-        en: {
-          title: 'Thank you for your interest!',
-          subtitle: 'Stay tuned for more updates soon.',
-          emailLabel: 'Leave your email if you want to confirm interest and show us it’s worth continuing the project',
-          placeholder: 'Enter your email',
-          button: 'Confirm Interest'
-        }
-      };
-
-      const t = isRU ? texts.ru : texts.en;
-      document.getElementById('title').innerText = t.title;
-      document.getElementById('subtitle').innerText = t.subtitle;
-      document.getElementById('email-label').innerText = t.emailLabel;
-      document.getElementById('email-input').placeholder = t.placeholder;
-      document.getElementById('submit-btn').innerText = t.button;
-    });
-  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank you!</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
-    <img src="assets/poster.jpg" alt="Постер игры" class="poster" />
-    <h1 id="title"></h1>
-    <p id="subtitle"></p>
+    <img src="poster.jpg" alt="Game Poster" class="poster" />
 
-    <div class="email-section">
-      <p id="email-label"></p>
-      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <input type="email" name="email" id="email-input" required />
-        <button type="submit" id="submit-btn"></button>
+    <h1 class="thank-you" data-lang="en">Thank you for your interest.</h1>
+    <h1 class="thank-you" data-lang="ru" style="display:none;">Спасибо за проявленный интерес.</h1>
+
+    <p data-lang="en">Expect more information soon.</p>
+    <p data-lang="ru" style="display:none;">Ожидайте обновления информации в скором времени.</p>
+
+    <div class="form-container">
+      <p data-lang="en">Enter your email if you'd like to show your interest and support the project:</p>
+      <p data-lang="ru" style="display:none;">Внесите свой адрес электронной почты, если хотите подтвердить интерес к проекту и показать, что стоит его продолжать:</p>
+
+      <form action="https://script.google.com/macros/s/ТВОЙ_ID/exec" method="POST">
+        <input type="email" name="email" required placeholder="Email" />
+        <button type="submit">Submit / Отправить</button>
       </form>
     </div>
   </div>
+
+  <script>
+    // Автоопределение языка
+    const userLang = navigator.language || navigator.userLanguage;
+    if (userLang.startsWith("ru")) {
+      document.querySelectorAll('[data-lang="en"]').forEach(el => el.style.display = "none");
+      document.querySelectorAll('[data-lang="ru"]').forEach(el => el.style.display = "block");
+    }
+  </script>
 </body>
 </html>
