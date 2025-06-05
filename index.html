@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thank you!</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="assets/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
-    <img src="poster.jpg" alt="Game Poster" class="poster" />
+    <img src="assets/poster.jpg" alt="Game Poster" class="poster" />
 
     <h1 class="thank-you" data-lang="en">Thank you for your interest.</h1>
     <h1 class="thank-you" data-lang="ru" style="display:none;">Спасибо за проявленный интерес.</h1>
@@ -31,7 +31,6 @@
   </div>
 
   <script>
-    // Автоопределение языка
     const userLang = navigator.language || navigator.userLanguage;
     if (userLang.startsWith("ru")) {
       document.querySelectorAll('[data-lang="en"]').forEach(el => el.style.display = "none");
