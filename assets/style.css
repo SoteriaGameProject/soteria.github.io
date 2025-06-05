@@ -1,17 +1,24 @@
 body {
   font-family: 'Montserrat', sans-serif;
-  background: #121212;
-  color: #f1f1f1;
+  background: #000000; /* Чёрный фон */
+  color: #ffffff; /* Белый текст */
   text-align: center;
   padding: 2em;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
 }
 
 .poster {
   max-width: 90%;
   height: auto;
   border-radius: 16px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  margin: 0 auto;
+  display: block;
 }
 
 h1 {
@@ -29,6 +36,12 @@ input[type="email"] {
   border: none;
   margin-right: 0.5em;
   width: 250px;
+  background-color: #1f1f1f; /* тёмный фон поля */
+  color: #ffffff; /* белый текст */
+}
+
+input[type="email"]::placeholder {
+  color: #cccccc;
 }
 
 button {
@@ -58,6 +71,12 @@ button {
   border-radius: 8px;
   border: none;
   margin-bottom: 1rem;
+  background-color: #1f1f1f;
+  color: #ffffff;
+}
+
+.email-section input[type="email"]::placeholder {
+  color: #cccccc;
 }
 
 .email-section button {
